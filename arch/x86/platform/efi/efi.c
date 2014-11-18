@@ -492,6 +492,8 @@ void __init efi_init(void)
 		return;
 
 	print_efi_memmap();
+
+	efi_esrt_init();
 }
 
 void __init efi_late_init(void)
