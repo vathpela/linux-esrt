@@ -33,7 +33,6 @@
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/efi.h>
-#include <linux/efi-bgrt.h>
 #include <linux/export.h>
 #include <linux/bootmem.h>
 #include <linux/slab.h>
@@ -492,13 +491,6 @@ void __init efi_init(void)
 		return;
 
 	print_efi_memmap();
-
-	efi_esrt_init();
-}
-
-void __init efi_late_init(void)
-{
-	efi_bgrt_init();
 }
 
 void __init efi_set_executable(efi_memory_desc_t *md, bool executable)

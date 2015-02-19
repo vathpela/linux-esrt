@@ -20,6 +20,7 @@
 #include <linux/init.h>
 #include <linux/device.h>
 #include <linux/efi.h>
+#include <linux/efi-bgrt.h>
 #include <linux/of.h>
 #include <linux/of_fdt.h>
 #include <linux/io.h>
@@ -441,6 +442,12 @@ int __init efi_config_init(efi_config_table_type_t *arch_tables)
 
 	early_memunmap(config_tables, efi.systab->nr_tables * sz);
 	return ret;
+}
+
+void __init efi_late_init(void)
+{
+	efi_esrt_init();
+	efi_bgrt_init();
 }
 
 #ifdef CONFIG_EFI_VARS_MODULE
